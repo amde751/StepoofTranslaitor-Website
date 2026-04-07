@@ -2,3 +2,4 @@ window.MICELIUM_MAP = {    "а": "👁",     "г": "🚰",     "е": "✡️",  
     };
 window.REVERSE_MAP = Object.fromEntries(
     Object.entries(window.MICELIUM_MAP).map(([char, emoji]) => [emoji, char]));
+AlphabetDictionary.js

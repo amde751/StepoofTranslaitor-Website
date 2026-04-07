@@ -1,0 +1,740 @@
+:root {
+    --bg-color: #ffffff;
+    --primary-color: #646cff;
+    --text-color: #213547;
+    --border-color: #e2e2e2;
+    --accent-green: #42b883;
+    --terminal-bg: #ffffff;
+    --terminal-header: #f8f8f8;
+    --output-bg: #fafafa;
+    --glow: rgba(100, 108, 255, 0.2);
+    --card-hover: #f5f5f5;
+}
+
+[data-accent="blue"] {
+    --primary-color: #5159fc;
+    --glow: rgba(107, 74, 255, 0.2);
+    --accent-green: #787ef8;
+}
+
+[data-accent="blue"] .red { background: #747bff; }
+[data-accent="blue"] .yellow { background: #646cff; }
+[data-accent="blue"] .green { background: #5c61ce; }
+[data-accent="blue"] .version { background: #646cff; }
+
+[data-theme="dark"] {
+    --bg-color: #0a0a0c;
+    --text-color: #e0e0e0;
+    --border-color: #2a2a2e;
+    --terminal-bg: #141417;
+    --terminal-header: #1c1c21;
+    --output-bg: #0d0d0f;
+    --card-hover: #1a1a1e;
+}
+
+[data-experimental="true"] {
+    --primary-color: #000000;
+    --accent-green: #ffffff;
+    --glow: rgba(0, 0, 0, 0.3);
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #000000;
+    --terminal-bg: #ffffff;
+    --terminal-header: #f0f0f0;
+    --output-bg: #f5f5f5;
+    --card-hover: #e8e8e8;
+}
+
+[data-experimental="true"][data-theme="dark"] {
+    --primary-color: #ffffff;
+    --accent-green: #000000;
+    --glow: rgba(255, 255, 255, 0.2);
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --border-color: #ffffff;
+    --terminal-bg: #000000;
+    --terminal-header: #0a0a0a;
+    --output-bg: #0f0f0f;
+    --card-hover: #1a1a1a;
+}
+
+[data-experimental="true"] .version {
+    background: linear-gradient(135deg, #000000, #333333);
+    animation: pulse 2s ease-in-out infinite;
+    color: white;
+}
+
+[data-experimental="true"][data-theme="dark"] .version {
+    background: linear-gradient(135deg, #ffffff, #cccccc);
+    color: black;
+}
+
+[data-experimental="true"] .red { 
+    background: #000000; 
+}
+
+[data-experimental="true"] .yellow { 
+    background: #666666; 
+}
+
+[data-experimental="true"] .green { 
+    background: #ffffff; 
+}
+
+[data-experimental="true"] .output-field {
+    color: #000000;
+    font-weight: 700;
+}
+
+[data-experimental="true"][data-theme="dark"] .output-field {
+    color: #ffffff;
+}
+
+[data-experimental="true"] .dict-modal-translation {
+    color: #000000;
+    font-weight: 700;
+}
+
+[data-experimental="true"][data-theme="dark"] .dict-modal-translation {
+    color: #ffffff;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: all 0.4s ease;
+    background-image: radial-gradient(circle at 50% 50%, var(--glow) 0%, transparent 80%);
+}
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.logo-box {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 10px var(--primary-color));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-transform: lowercase;
+}
+
+.version {
+    font-size: 0.7rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-left: 12px;
+}
+
+.subtitle {
+    opacity: 0.6;
+    margin-top: 0.5rem;
+}
+
+.theme-btn, .github-btn, .accent-btn, .experimental-btn {
+    position: fixed;
+    top: 25px;
+    z-index: 1000;
+    background: var(--terminal-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.4rem;
+}
+
+.theme-btn { right: 25px; }
+.accent-btn { right: 85px; }
+.experimental-btn { right: 145px; }
+.github-btn { left: 25px; }
+
+.theme-btn:hover, .github-btn:hover, .accent-btn:hover, .experimental-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.browser-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0;
+    background: var(--terminal-header);
+    padding: 8px 8px 0 8px;
+    border-radius: 16px 16px 0 0;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+}
+
+.browser-tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background: var(--output-bg);
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    color: var(--text-color);
+    opacity: 0.7;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.2s ease;
+    min-width: 140px;
+}
+
+.browser-tab:hover:not(.active) {
+    opacity: 0.9;
+    background: var(--terminal-bg);
+}
+
+.browser-tab.active {
+    background: var(--terminal-bg);
+    opacity: 1;
+    border-bottom: 2px solid var(--terminal-bg);
+    margin-bottom: -1px;
+    z-index: 1;
+}
+
+.tab-icon {
+    font-size: 1.1rem;
+}
+
+.tab-title {
+    flex: 1;
+}
+
+.page-content {
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: 2rem;
+    background: var(--terminal-bg);
+    animation: fadeInPage 0.3s ease;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.terminal-wrapper {
+    background: var(--terminal-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    text-align: left;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: var(--terminal-header);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dots-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.4s ease;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.label {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    border: none;
+    padding: 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--text-color);
+    resize: none;
+    outline: none;
+}
+
+.control-panel {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .dict-modal-close, .dict-modal-copy) {
+    flex: 1;
+    padding: 16px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-main {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color) !important;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color) !important;
+    color: var(--primary-color);
+}
+
+.btn-main:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+    opacity: 0.9;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 5px 12px;
+    font-size: 0.65rem;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.3s;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.copy-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.output-field {
+    min-height: 60px;
+    padding: 20px;
+    color: var(--accent-green);
+    background: var(--output-bg);
+    word-break: break-all;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.search-wrapper {
+    margin-bottom: 2rem;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 16px 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--output-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--glow);
+}
+
+.dict-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.dict-tab-btn {
+    flex: 1;
+    padding: 14px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.dict-tab-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.dict-tab-btn:hover:not(.active) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.dict-tab-content {
+    display: none;
+}
+
+.dict-tab-content.active {
+    display: block;
+    animation: fadeInPage 0.3s ease;
+}
+
+.dictionary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1px;
+    background: var(--border-color);
+    padding: 0;
+}
+
+.dict-item {
+    background: var(--terminal-bg);
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dict-item:hover {
+    background: var(--card-hover);
+    transform: scale(1.05);
+}
+
+.dict-char {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.dict-emoji {
+    font-size: 2rem;
+}
+
+.dictionary-list {
+    padding: 0;
+}
+
+.vocab-item {
+    background: var(--terminal-bg);
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.vocab-item:last-child {
+    border-bottom: none;
+}
+
+.vocab-item:hover {
+    background: var(--card-hover);
+    padding-left: 30px;
+}
+
+.vocab-word {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.vocab-translation {
+    font-size: 1.3rem;
+    color: var(--accent-green);
+}
+
+.no-results {
+    padding: 40px;
+    text-align: center;
+    opacity: 0.5;
+    font-size: 1.1rem;
+}
+
+.dict-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    transition: opacity 0.3s ease;
+}
+
+.dict-modal-content {
+    background: var(--terminal-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.8) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.dict-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dict-modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    flex: 1;
+}
+
+.dict-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-color);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+    font-family: Arial, sans-serif;
+    font-weight: 300;
+    padding: 0;
+}
+
+.dict-modal-close:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.dict-modal-close:active {
+    transform: scale(0.95);
+}
+
+.dict-modal-body {
+    padding: 40px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dict-modal-original {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    padding: 20px 30px;
+    background: var(--output-bg);
+    border-radius: 12px;
+    min-width: 120px;
+    max-width: 45%;
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+.dict-modal-arrow {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.dict-modal-translation {
+    font-size: 2rem;
+    color: var(--accent-green);
+    padding: 20px 30px;
+    background: var(--output-bg);
+    border-radius: 12px;
+    min-width: 120px;
+    max-width: 45%;
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+.dict-modal-footer {
+    padding: 20px 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+.dict-modal-copy {
+    width: 100%;
+    padding: 14px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dict-modal-copy:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .container { padding: 1rem; }
+    h1 { font-size: 2rem; }
+    
+    .theme-btn, .accent-btn, .experimental-btn, .github-btn {
+        top: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-btn { right: 15px; }
+    .accent-btn { right: 65px; }
+    .experimental-btn { right: 115px; }
+    .github-btn { left: 15px; }
+    
+    .control-panel { flex-direction: column; }
+    
+    .dictionary-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .dict-item { padding: 15px; }
+    
+    .vocab-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .dict-modal-content {
+        width: 95%;
+        max-width: 400px;
+    }
+    
+    .dict-modal-body {
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px 20px;
+    }
+    
+    .dict-modal-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .dict-modal-original,
+    .dict-modal-translation {
+        font-size: 1.5rem;
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
+        padding: 15px 20px;
+    }
+    
+    .dict-modal-header h3 {
+        font-size: 1rem;
+    }
+    
+    .dict-modal-copy {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+}
