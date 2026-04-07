@@ -34,7 +34,8 @@ export const VOCABULARYWORDS_MAP = {
     "Мажор": "🗜️кря🚰👁️",
     "Мажоры": "🗜️кря🚰🫁",
     "Псы": "🗜️ы🦷ы",
-    "Спасибо": "з🪼🧿🚰🫁🪼"
+    "Спасибо": "з🪼🧿🚰🫁🪼",
+    "каджаз": "р👁зр👁🥌🧿🎚ч🫁к"
 };
 
 export const REVERSE_MICELIUM_MAP = Object.fromEntries(
