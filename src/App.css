@@ -1,123 +1,120 @@
 :root {
     --bg-color: #ffffff;
-    --primary-color: #646cff;
+    --primary-color: #000000;
     --text-color: #213547;
     --border-color: #e2e2e2;
     --accent-green: #42b883;
     --terminal-bg: #ffffff;
     --terminal-header: #f8f8f8;
     --output-bg: #fafafa;
-    --glow: rgba(100, 108, 255, 0.2);
-    --card-hover: #f5f5f5;
+    --glow: rgba(100, 108, 255, .2);
+    --card-hover: #f5f5f5
 }
 
-[data-accent="blue"] {
+/* Акцент: синий */
+[data-accent=blue] {
     --primary-color: #5159fc;
-    --glow: rgba(107, 74, 255, 0.2);
-    --accent-green: #787ef8;
+    --glow: rgba(107, 74, 255, .2);
+    --accent-green: #787ef8
 }
 
-[data-accent="blue"] .red { background: #747bff; }
-[data-accent="blue"] .yellow { background: #646cff; }
-[data-accent="blue"] .green { background: #5c61ce; }
-[data-accent="blue"] .version { background: #646cff; }
+[data-accent=blue] .red { background: #747bff }
+[data-accent=blue] .yellow { background: #646cff }
+[data-accent=blue] .green { background: #5c61ce }
+[data-accent=blue] .version { background: #646cff }
 
-[data-theme="dark"] {
-    --bg-color: #0a0a0c;
+/* Тёмная тема */
+[data-theme=dark] {
+    --bg-color: #3b3e13;
     --text-color: #e0e0e0;
     --border-color: #2a2a2e;
-    --terminal-bg: #141417;
-    --terminal-header: #1c1c21;
-    --output-bg: #0d0d0f;
-    --card-hover: #1a1a1e;
+    --terminal-bg: #feffbf;
+    --terminal-header: #ffee5d;
+    --output-bg: #ffffff;
+    --card-hover: #1a1a1e
 }
 
-[data-experimental="true"] {
+/* Экспериментальный режим (светлый) */
+[data-experimental=true] {
     --primary-color: #000000;
     --accent-green: #ffffff;
-    --glow: rgba(0, 0, 0, 0.3);
+    --glow: rgba(0, 0, 0, .3);
     --bg-color: #ffffff;
     --text-color: #000000;
     --border-color: #000000;
     --terminal-bg: #ffffff;
     --terminal-header: #f0f0f0;
     --output-bg: #f5f5f5;
-    --card-hover: #e8e8e8;
+    --card-hover: #e8e8e8
 }
 
-[data-experimental="true"][data-theme="dark"] {
+/* Экспериментальный режим (тёмный) */
+[data-experimental=true][data-theme=dark] {
     --primary-color: #ffffff;
     --accent-green: #000000;
-    --glow: rgba(255, 255, 255, 0.2);
+    --glow: rgba(255, 255, 255, .2);
     --bg-color: #000000;
     --text-color: #ffffff;
     --border-color: #ffffff;
     --terminal-bg: #000000;
     --terminal-header: #0a0a0a;
     --output-bg: #0f0f0f;
-    --card-hover: #1a1a1a;
+    --card-hover: #1a1a1a
 }
 
-[data-experimental="true"] .version {
-    background: linear-gradient(135deg, #000000, #333333);
+/* Экспериментальные стили для элементов */
+[data-experimental=true] .version {
+    background: linear-gradient(135deg, #000, #333);
     animation: pulse 2s ease-in-out infinite;
-    color: white;
+    color: #fff
 }
 
-[data-experimental="true"][data-theme="dark"] .version {
-    background: linear-gradient(135deg, #ffffff, #cccccc);
-    color: black;
+[data-experimental=true][data-theme=dark] .version {
+    background: linear-gradient(135deg, #fff, #ccc);
+    color: #000
 }
 
-[data-experimental="true"] .red { 
-    background: #000000; 
+[data-experimental=true] .red { background: #000 }
+[data-experimental=true] .yellow { background: #666 }
+[data-experimental=true] .green { background: #fff }
+
+[data-experimental=true] .output-field {
+    color: #000;
+    font-weight: 700
 }
 
-[data-experimental="true"] .yellow { 
-    background: #666666; 
+[data-experimental=true][data-theme=dark] .output-field { color: #fff }
+
+[data-experimental=true] .dict-modal-translation {
+    color: #000;
+    font-weight: 700
 }
 
-[data-experimental="true"] .green { 
-    background: #ffffff; 
-}
+[data-experimental=true][data-theme=dark] .dict-modal-translation { color: #fff }
 
-[data-experimental="true"] .output-field {
-    color: #000000;
-    font-weight: 700;
-}
-
-[data-experimental="true"][data-theme="dark"] .output-field {
-    color: #ffffff;
-}
-
-[data-experimental="true"] .dict-modal-translation {
-    color: #000000;
-    font-weight: 700;
-}
-
-[data-experimental="true"][data-theme="dark"] .dict-modal-translation {
-    color: #ffffff;
-}
-
+/* Анимации */
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 1 }
+    50% { opacity: .7 }
 }
 
+/* Сброс и база */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: 'JetBrains Mono', monospace;
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: #000000;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    transition: all 0.4s ease;
+    transition: all .4s ease;
     background-image: radial-gradient(circle at 50% 50%, var(--glow) 0%, transparent 80%);
 }
 
@@ -136,9 +133,8 @@ body {
     text-align: center;
 }
 
-.header {
-    margin-bottom: 2rem;
-}
+/* Шапка */
+.header { margin-bottom: 2rem; }
 
 .logo-box {
     font-size: 3.5rem;
@@ -158,20 +154,24 @@ h1 {
 }
 
 .version {
-    font-size: 0.7rem;
+    font-size: .7rem;
     background: var(--primary-color);
-    color: white;
+    color: #fff;
     padding: 2px 10px;
     border-radius: 20px;
     margin-left: 12px;
 }
 
 .subtitle {
-    opacity: 0.6;
-    margin-top: 0.5rem;
+    opacity: .6;
+    margin-top: .5rem;
 }
 
-.theme-btn, .github-btn, .accent-btn, .experimental-btn {
+/* Фиксированные кнопки */
+.theme-btn,
+.github-btn,
+.accent-btn,
+.experimental-btn {
     position: fixed;
     top: 25px;
     z-index: 1000;
@@ -185,7 +185,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all .3s cubic-bezier(.4, 0, .2, 1);
     font-size: 1.4rem;
 }
 
@@ -194,18 +194,22 @@ h1 {
 .experimental-btn { right: 145px; }
 .github-btn { left: 25px; }
 
-.theme-btn:hover, .github-btn:hover, .accent-btn:hover, .experimental-btn:hover {
+.theme-btn:hover,
+.github-btn:hover,
+.accent-btn:hover,
+.experimental-btn:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
     transform: translateY(-2px);
 }
 
+/* Вкладки браузера */
 .browser-tabs {
     display: flex;
     gap: 4px;
     margin-bottom: 0;
     background: var(--terminal-header);
-    padding: 8px 8px 0 8px;
+    padding: 8px 8px 0;
     border-radius: 16px 16px 0 0;
     border: 1px solid var(--border-color);
     border-bottom: none;
@@ -219,20 +223,20 @@ h1 {
     padding: 10px 20px;
     font-family: inherit;
     font-weight: 500;
-    font-size: 0.85rem;
+    font-size: .85rem;
     cursor: pointer;
     background: var(--output-bg);
     border: 1px solid var(--border-color);
     border-bottom: none;
     color: var(--text-color);
-    opacity: 0.7;
+    opacity: .7;
     border-radius: 8px 8px 0 0;
-    transition: all 0.2s ease;
+    transition: all .2s ease;
     min-width: 140px;
 }
 
 .browser-tab:hover:not(.active) {
-    opacity: 0.9;
+    opacity: .9;
     background: var(--terminal-bg);
 }
 
@@ -244,13 +248,8 @@ h1 {
     z-index: 1;
 }
 
-.tab-icon {
-    font-size: 1.1rem;
-}
-
-.tab-title {
-    flex: 1;
-}
+.tab-icon { font-size: 1.1rem; }
+.tab-title { flex: 1; }
 
 .page-content {
     border: 1px solid var(--border-color);
@@ -258,17 +257,18 @@ h1 {
     border-radius: 0 0 16px 16px;
     padding: 2rem;
     background: var(--terminal-bg);
-    animation: fadeInPage 0.3s ease;
+    animation: fadeInPage .3s ease;
 }
 
 @keyframes fadeInPage {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
+/* Терминал */
 .terminal-wrapper {
-    background: var(--terminal-bg);
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    border: 1px solid #f5f5f5;
     border-radius: 16px;
     margin-bottom: 2rem;
     text-align: left;
@@ -295,7 +295,7 @@ h1 {
     height: 12px;
     border-radius: 50%;
     flex-shrink: 0;
-    transition: background 0.4s ease;
+    transition: background .4s ease;
 }
 
 .red { background: #ff5f56; }
@@ -303,8 +303,8 @@ h1 {
 .green { background: #27c93f; }
 
 .label {
-    font-size: 0.75rem;
-    opacity: 0.5;
+    font-size: .75rem;
+    opacity: .5;
     text-transform: uppercase;
     margin-left: 8px;
 }
@@ -322,6 +322,7 @@ textarea {
     outline: none;
 }
 
+/* Панель управления */
 .control-panel {
     display: flex;
     gap: 15px;
@@ -335,13 +336,13 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     font-weight: 700;
     cursor: pointer;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     border: none;
 }
 
 .btn-main {
     background: var(--primary-color);
-    color: white;
+    color: #fff;
     border: 2px solid var(--primary-color) !important;
 }
 
@@ -353,13 +354,13 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
 
 .btn-main:hover {
     background: var(--primary-color) !important;
-    color: white !important;
-    opacity: 0.9;
+    color: #fff !important;
+    opacity: .9;
 }
 
 .btn-outline:hover {
     background: var(--primary-color) !important;
-    color: white !important;
+    color: #fff !important;
 }
 
 .copy-btn {
@@ -367,18 +368,18 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
     padding: 5px 12px;
-    font-size: 0.65rem;
+    font-size: .65rem;
     border-radius: 6px;
     cursor: pointer;
     flex-shrink: 0;
-    transition: 0.3s;
+    transition: .3s;
     font-family: inherit;
     font-weight: 700;
 }
 
 .copy-btn:hover {
     background: var(--primary-color);
-    color: white;
+    color: #fff;
 }
 
 .output-field {
@@ -392,9 +393,8 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     white-space: pre-wrap;
 }
 
-.search-wrapper {
-    margin-bottom: 2rem;
-}
+/* Поиск */
+.search-wrapper { margin-bottom: 2rem; }
 
 #searchInput {
     width: 100%;
@@ -406,7 +406,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     border: 1px solid var(--border-color);
     border-radius: 12px;
     outline: none;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
 }
 
 #searchInput:focus {
@@ -414,6 +414,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     box-shadow: 0 0 0 3px var(--glow);
 }
 
+/* Словарь */
 .dict-tabs {
     display: flex;
     gap: 10px;
@@ -427,7 +428,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     font-weight: 700;
     cursor: pointer;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     background: transparent;
     border: 2px solid var(--border-color);
     color: var(--text-color);
@@ -436,7 +437,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
 .dict-tab-btn.active {
     background: var(--primary-color);
     border-color: var(--primary-color);
-    color: white;
+    color: #fff;
 }
 
 .dict-tab-btn:hover:not(.active) {
@@ -444,13 +445,10 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     color: var(--primary-color);
 }
 
-.dict-tab-content {
-    display: none;
-}
-
+.dict-tab-content { display: none; }
 .dict-tab-content.active {
     display: block;
-    animation: fadeInPage 0.3s ease;
+    animation: fadeInPage .3s ease;
 }
 
 .dictionary-grid {
@@ -465,7 +463,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     background: var(--terminal-bg);
     padding: 20px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     cursor: pointer;
 }
 
@@ -481,13 +479,9 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     margin-bottom: 8px;
 }
 
-.dict-emoji {
-    font-size: 2rem;
-}
+.dict-emoji { font-size: 2rem; }
 
-.dictionary-list {
-    padding: 0;
-}
+.dictionary-list { padding: 0; }
 
 .vocab-item {
     background: var(--terminal-bg);
@@ -496,13 +490,11 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     cursor: pointer;
 }
 
-.vocab-item:last-child {
-    border-bottom: none;
-}
+.vocab-item:last-child { border-bottom: none; }
 
 .vocab-item:hover {
     background: var(--card-hover);
@@ -523,23 +515,24 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
 .no-results {
     padding: 40px;
     text-align: center;
-    opacity: 0.5;
+    opacity: .5;
     font-size: 1.1rem;
 }
 
+/* Модальное окно */
 .dict-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: #0009;
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 3000;
-    transition: opacity 0.3s ease;
+    transition: opacity .3s ease;
 }
 
 .dict-modal-content {
@@ -548,17 +541,17 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     border-radius: 20px;
     max-width: 600px;
     width: 90%;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: modalSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 20px 60px #0000004d;
+    animation: modalSlideIn .3s cubic-bezier(.68, -.55, .265, 1.55);
     overflow: hidden;
 }
 
 @keyframes modalSlideIn {
-    from {
-        transform: scale(0.8) translateY(-20px);
+    0% {
+        transform: scale(.8) translateY(-20px);
         opacity: 0;
     }
-    to {
+    100% {
         transform: scale(1) translateY(0);
         opacity: 1;
     }
@@ -592,7 +585,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all .2s ease;
     flex-shrink: 0;
     margin-left: auto;
     font-family: Arial, sans-serif;
@@ -602,12 +595,10 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
 
 .dict-modal-close:hover {
     background: var(--primary-color);
-    color: white;
+    color: #fff;
 }
 
-.dict-modal-close:active {
-    transform: scale(0.95);
-}
+.dict-modal-close:active { transform: scale(.95); }
 
 .dict-modal-body {
     padding: 40px 25px;
@@ -635,7 +626,7 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
 .dict-modal-arrow {
     font-size: 1.8rem;
     color: var(--primary-color);
-    opacity: 0.6;
+    opacity: .6;
     flex-shrink: 0;
 }
 
@@ -662,79 +653,70 @@ button:not(.theme-btn, .github-btn, .accent-btn, .experimental-btn, .copy-btn, .
     padding: 14px;
     font-family: inherit;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: .95rem;
     background: var(--primary-color);
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
 }
 
 .dict-modal-copy:hover {
-    opacity: 0.9;
+    opacity: .9;
     transform: translateY(-2px);
 }
 
+/* Адаптивность */
 @media (max-width: 600px) {
     .container { padding: 1rem; }
     h1 { font-size: 2rem; }
-    
+
     .theme-btn, .accent-btn, .experimental-btn, .github-btn {
         top: 15px;
         width: 40px;
         height: 40px;
     }
-    
     .theme-btn { right: 15px; }
     .accent-btn { right: 65px; }
     .experimental-btn { right: 115px; }
     .github-btn { left: 15px; }
-    
+
     .control-panel { flex-direction: column; }
-    
-    .dictionary-grid {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    }
-    
+
+    .dictionary-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
     .dict-item { padding: 15px; }
-    
+
     .vocab-item {
         flex-direction: column;
         gap: 10px;
         text-align: center;
     }
-    
+
     .dict-modal-content {
         width: 95%;
         max-width: 400px;
     }
-    
+
     .dict-modal-body {
         flex-direction: column;
         gap: 15px;
         padding: 30px 20px;
     }
-    
-    .dict-modal-arrow {
-        transform: rotate(90deg);
-    }
-    
-    .dict-modal-original,
-    .dict-modal-translation {
+
+    .dict-modal-arrow { transform: rotate(90deg); }
+
+    .dict-modal-original, .dict-modal-translation {
         font-size: 1.5rem;
         min-width: auto;
         max-width: 100%;
         width: 100%;
         padding: 15px 20px;
     }
-    
-    .dict-modal-header h3 {
-        font-size: 1rem;
-    }
-    
+
+    .dict-modal-header h3 { font-size: 1rem; }
     .dict-modal-copy {
-        font-size: 0.85rem;
+        font-size: .85rem;
         padding: 12px;
     }
 }
