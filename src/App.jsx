@@ -57,7 +57,7 @@ function App() {
         <span className="icon">{theme === 'dark' ? '☀️' : '🌙'}</span>
       </button>
       <button className="accent-btn" onClick={toggleAccent}>
-        {accent === 'blue' ? '🪼' : '🧿'}
+        {accent === 'blue' ? '🪼' : '🍌'}
       </button>
       <button className="experimental-btn" onClick={toggleExperimental}>
         🧪

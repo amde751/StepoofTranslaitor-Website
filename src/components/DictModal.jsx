@@ -23,7 +23,7 @@ function DictModal({ original, translation, type, onClose }) {
     }
   }
 
-  const title = type === 'alphabet' ? 'Буква' : 'Слово'
+  const title = type === 'alphabet' ? 'Банан' : 'Бананость'
 
   return (
     <div className="dict-modal-overlay" onClick={handleOverlayClick} style={{ opacity: 1 }}>
@@ -43,7 +43,7 @@ function DictModal({ original, translation, type, onClose }) {
             onClick={handleCopy}
             style={copied ? { background: 'var(--accent-green)' } : {}}
           >
-            {copied ? '✓ Скопировано!' : 'Копировать перевод'}
+            {copied ? '✓ Бананость Скопирована!' : 'Копировать Бананость'}
           </button>
         </div>
       </div>

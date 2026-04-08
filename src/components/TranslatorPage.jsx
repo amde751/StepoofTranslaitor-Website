@@ -63,7 +63,7 @@ function TranslatorPage() {
             <span className="dot yellow"></span>
             <span className="dot green"></span>
           </div>
-          <span className="label">Ввод_мiцеlium🧿</span>
+          <span className="label">Ввод_Бананость🍌</span>
         </div>
         <textarea 
           value={input}
@@ -73,8 +73,8 @@ function TranslatorPage() {
       </div>
 
       <div className="control-panel">
-        <button className="btn-main" onClick={handleEncode}>Зашифровать</button>
-        <button className="btn-outline" onClick={handleDecode}>Расшифровать</button>
+        <button className="btn-main" onClick={handleEncode}>Забананить</button>
+        <button className="btn-outline" onClick={handleDecode}>Разбананить</button>
       </div>
 
       <div className="terminal-wrapper">
@@ -83,7 +83,7 @@ function TranslatorPage() {
             <span className="dot red"></span>
             <span className="dot yellow"></span>
             <span className="dot green"></span>
-            <span className="label">Вывод_мiцеlium👀</span>
+            <span className="label">Вывод_бананы🍌</span>
           </div>
           <button className="copy-btn" onClick={handleCopy}>КОПИРОВАТЬ</button>
         </div>

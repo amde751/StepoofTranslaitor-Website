@@ -13,7 +13,7 @@ function BrowserTabs({ activePage, setActivePage }) {
         onClick={() => setActivePage('dictionary')}
       >
         <span className="tab-icon">📚</span>
-        <span className="tab-title">Словарь</span>
+        <span className="tab-title">Бананность</span>
       </div>
     </div>
   )

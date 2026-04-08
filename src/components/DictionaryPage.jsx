@@ -29,7 +29,7 @@ function DictionaryPage() {
         <input
           type="text"
           id="searchInput"
-          placeholder="🔍 Поиск по словарю..."
+          placeholder="🔍 Поиск по Баннаностью..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -59,11 +59,11 @@ function DictionaryPage() {
                 <span className="dot yellow"></span>
                 <span className="dot green"></span>
               </div>
-              <span className="label">Алфавит_мiцеlium🧿</span>
+              <span className="label">Алфавит_Банана🍌</span>
             </div>
             <div className="dictionary-grid">
               {filteredAlphabet.length === 0 ? (
-                <div className="no-results">Ничего не найдено 😔</div>
+                <div className="no-results">Ничего не за бананено 😔</div>
               ) : (
                 filteredAlphabet.map(([char, emoji]) => (
                   <div
@@ -90,7 +90,7 @@ function DictionaryPage() {
                 <span className="dot yellow"></span>
                 <span className="dot green"></span>
               </div>
-              <span className="label">Словарные_слова👀</span>
+              <span className="label">Словарные_бананы🍌</span>
             </div>
             <div className="dictionary-list">
               {filteredVocabulary.length === 0 ? (
